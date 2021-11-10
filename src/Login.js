@@ -139,6 +139,20 @@ function LoginNew() {
                 minLength="8"
                 type="password"
               />
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
+                  marginBottom: "10px",
+                }}
+              >
+                <input
+                  type="checkbox"
+                  style={{ marginRight: "10px", marginTop: "2px" }}
+                />
+                <p style={{ margin: "0px", padding: "0px" }}>Remember Me</p>
+              </div>
               <p>
                 Please sign up -{" "}
                 <a
@@ -161,6 +175,9 @@ function LoginNew() {
                 }}
                 variant="dark"
                 type="submit"
+                disabled={
+                  username.length > 0 && password.length > 0 ? false : true
+                }
               >
                 Login
               </Button>

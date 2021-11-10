@@ -201,6 +201,7 @@ function Sign() {
                   Login
                 </a>
               </p>
+              <p style={{ cursor: "pointer" }}>Terms & Conditions</p>
               <Button
                 style={{
                   width: "150px",
@@ -209,6 +210,9 @@ function Sign() {
                 }}
                 variant="dark"
                 type="submit"
+                disabled={
+                  username.length > 9 && password.length > 7 && email.length > 0
+                }
               >
                 Register
               </Button>
