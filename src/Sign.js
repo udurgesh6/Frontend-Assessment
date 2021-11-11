@@ -6,6 +6,7 @@ import login from "./assets/images/login.jpeg";
 import { useNavigate } from "react-router-dom";
 
 function Sign() {
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [firstname, setFirstname] = useState("");
@@ -38,11 +39,15 @@ function Sign() {
             Username: username,
           });
           axios
-            .post(`http://localhost:57754/api/signup`, params, {
-              headers: {
-                "content-type": "application/json",
-              },
-            })
+            .post(
+              `https://expiry-product-management.azurewebsites.net/api/signup`,
+              params,
+              {
+                headers: {
+                  "content-type": "application/json",
+                },
+              }
+            )
             .then((response) => {
               console.log(response);
               navigate("/login");
@@ -165,9 +170,9 @@ function Sign() {
                 onChange={(e) => setEmail(e.target.value)}
                 required="true"
               />
-              <label>Contact Number</label>
+              <label for="contact">Contact Number</label>
               <input
-                id="firstname"
+                id="contact"
                 style={{
                   maxWidth: "250px",
                   marginBottom: "5px",
@@ -201,7 +206,19 @@ function Sign() {
                   Login
                 </a>
               </p>
-              <p style={{ cursor: "pointer" }}>Terms & Conditions</p>
+              <p style={{ cursor: "pointer" }}>
+                <a
+                  href="https://en.wikipedia.org/wiki/Terms_of_service"
+                  style={{
+                    fontWeight: "500",
+                    cursor: "pointer",
+                    textDecorationLine: "none",
+                    color: "black",
+                  }}
+                >
+                  Terms & Conditions
+                </a>
+              </p>
               <Button
                 style={{
                   width: "150px",

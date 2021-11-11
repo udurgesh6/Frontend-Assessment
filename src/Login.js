@@ -6,6 +6,7 @@ import login from "./assets/images/login.jpeg";
 import { useNavigate } from "react-router-dom";
 
 function LoginNew() {
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -18,21 +19,26 @@ function LoginNew() {
     });
 
     var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+
     if (format.test(username)) {
       alert("No special characters allowed");
     } else {
       if (
         /[a-z]/.test(password) &&
         /[A-Z]/.test(password) &&
-        /[1-9]/.test(password)
+        /[1-9]/.test(password) 
       ) {
         if (password.length >= 8) {
           axios
-            .post("http://localhost:57754/api/products/authenticate", params, {
-              headers: {
-                "content-type": "application/json",
-              },
-            })
+            .post(
+              "https://expiry-product-management.azurewebsites.net/api/products/authenticate",
+              params,
+              {
+                headers: {
+                  "content-type": "application/json",
+                },
+              }
+            )
             .then((response) => {
               sessionStorage.setItem("token", response.data);
               if (username === "udurgesh6") {

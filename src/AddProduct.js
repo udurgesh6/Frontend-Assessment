@@ -20,7 +20,7 @@ function AddProduct() {
       ProductExpiryDate: ed,
     });
     axios
-      .post(`http://localhost:57754/api/products`, params, {
+      .post(`https://expiry-product-management.azurewebsites.net/api/products`, params, {
         headers: {
           "content-type": "application/json",
           Authorization: `Bearer ${sessionStorage.getItem("token")}`,
@@ -39,7 +39,7 @@ function AddProduct() {
       navigate("/login");
     } else {
       axios
-        .get("http://localhost:57754/api/products", {
+        .get("https://expiry-product-management.azurewebsites.net/api/products", {
           headers: {
             Authorization: `Bearer ${sessionStorage.getItem("token")}`,
           },
@@ -135,7 +135,13 @@ function AddProduct() {
                 onClick={(e) => addProduct(e)}
               />
               &nbsp;&nbsp;
-              <Button as="input" variant="danger" type="submit" value="Reset" />
+              {/* <Button
+                as="input"
+                variant="danger"
+                type="submit"
+                value="Reset"
+                onClick={(e) => e.preventDefault()}
+              /> */}
             </Col>
           </Form.Group>
         </Form>

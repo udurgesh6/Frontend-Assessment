@@ -22,7 +22,7 @@ function Products() {
   const onProductSearch = () => {
     if (selectedSearch === "name") {
       axios
-        .get(`http://localhost:57754/api/search/${searchedItem}/1`, {
+        .get(`https://expiry-product-management.azurewebsites.net/api/search/${searchedItem}/1`, {
           headers: {
             Authorization: `Bearer ${sessionStorage.getItem("token")}`,
           },
@@ -42,7 +42,7 @@ function Products() {
         });
     } else {
       axios
-        .get(`http://localhost:57754/api/search/${searchedItem}/2`, {
+        .get(`https://expiry-product-management.azurewebsites.net/api/search/${searchedItem}/2`, {
           headers: {
             Authorization: `Bearer ${sessionStorage.getItem("token")}`,
           },
@@ -67,9 +67,12 @@ function Products() {
     sessionStorage.setItem("token", "");
     navigate("/login");
   };
+
   const [curr, setCurr] = useState(
     new Date().setMonth(new Date().getMonth() + 1)
   );
+
+
   useEffect(() => {
     console.log(new Date(curr));
     if (
@@ -79,7 +82,7 @@ function Products() {
       navigate("/login");
     } else {
       axios
-        .get("http://localhost:57754/api/products", {
+        .get("https://expiry-product-management.azurewebsites.net/api/products", {
           headers: {
             Authorization: `Bearer ${sessionStorage.getItem("token")}`,
           },
@@ -185,7 +188,7 @@ function Products() {
           ProductExpiryDate: all_products[i].Exp,
         });
         axios
-          .put(`http://localhost:57754/api/products/${id}`, params, {
+          .put(`https://expiry-product-management.azurewebsites.net/api/products/${id}`, params, {
             headers: {
               "content-type": "application/json",
               Authorization: `Bearer ${sessionStorage.getItem("token")}`,
@@ -211,7 +214,7 @@ function Products() {
           ProductExpiryDate: all_products[i].Exp,
         });
         axios
-          .put(`http://localhost:57754/api/products/${id}`, params, {
+          .put(`https://expiry-product-management.azurewebsites.net/api/products/${id}`, params, {
             headers: {
               "content-type": "application/json",
               Authorization: `Bearer ${sessionStorage.getItem("token")}`,
@@ -226,7 +229,7 @@ function Products() {
   };
 
   const deleteProduct = (id) => {
-    axios.delete(`http://localhost:57754/api/products/${id}`, {
+    axios.delete(`https://expiry-product-management.azurewebsites.net/api/products/${id}`, {
       headers: {
         Authorization: `Bearer ${sessionStorage.getItem("token")}`,
       },
@@ -243,7 +246,7 @@ function Products() {
   };
 
   const deleteSearchedProduct = (id) => {
-    axios.delete(`http://localhost:57754/api/products/${id}`, {
+    axios.delete(`https://expiry-product-management.azurewebsites.net/api/products/${id}`, {
       headers: {
         Authorization: `Bearer ${sessionStorage.getItem("token")}`,
       },
