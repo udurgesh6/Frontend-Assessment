@@ -188,4 +188,5 @@ function LoginNew() {
     </div>
   );
 }
+
 export default LoginNew;

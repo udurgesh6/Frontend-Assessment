@@ -212,6 +212,8 @@ function Sign() {
                 type="submit"
                 disabled={
                   username.length > 9 && password.length > 7 && email.length > 0
+                    ? false
+                    : true
                 }
               >
                 Register
